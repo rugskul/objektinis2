@@ -3,17 +3,24 @@
 void apiestudenta(studentas &studentas) {
     cout << "Vardas ir pavardė: ";
     cin >> studentas.vardas >> studentas.pavarde;
-    cout << "Kiek namų darbų pažymių? ";
-    cin >> studentas.nd;
-    for (int i = 0; i < studentas.nd; i++) {
-        int pazymys;
-        cout << "Įveskite " << i + 1 << "-ąjį pažymį: ";
-        cin >> pazymys;
-        studentas.pazymiai.push_back(pazymys);
+    cout << "Namų darbų pažymiai (baigti 2 kartus paspaudus ENTER): " << endl;
+
+    //pazymiu ivedimas su enter
+    int pazymys;
+    string p;
+    while (true) {
+        getline(cin, p);
+        if (p.empty()) {
+            if (cin.peek() == '\n') {
+                break;
+            }
+        } else {
+            pazymys = stoi(p);
+            studentas.pazymiai.push_back(pazymys);
+        }
     }
-    cout << "Egzamino rezultatas: ";
-    cin >> studentas.egz;
-    
+    int nd = studentas.pazymiai.size();
+
     //galutinis (vid)
     double suma = 0;
     for (int i; i < studentas.nd; i++) {
@@ -24,9 +31,9 @@ void apiestudenta(studentas &studentas) {
     //galutinis (med)
     sort(studentas.pazymiai.begin(), studentas.pazymiai.end());
     if (studentas.nd % 2 == 0) {
-        studentas.mediana = (double)(studentas.pazymiai[studentas.nd/2-1] + studentas.pazymiai[studentas.nd/2])/2;
+        studentas.mediana = (double)(studentas.pazymiai[nd/2-1] + studentas.pazymiai[nd/2])/2;
     } else {
-        studentas.mediana = studentas.pazymiai[studentas.nd/2];
+        studentas.mediana = studentas.pazymiai[nd/2];
     }
     studentas.galmed = 0.4*studentas.mediana+0.6*studentas.egz;
 }
