@@ -10,9 +10,8 @@
 using namespace std;
 
 struct studentas {
-    string vardas;
-    string pavarde;
-    int nd;
+    string vardas, pavarde;
+    int egz;
     vector<int> pazymiai;
-    double galvid, galmed, egz, vidurkis, mediana;
+    double galvid, galmed, mediana;
 };
