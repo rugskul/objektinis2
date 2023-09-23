@@ -47,7 +47,6 @@ void apieStudenta(studentas &studentas) {
     }
     studentas.galmed = 0.4*studentas.mediana+0.6*studentas.egz;
 }
-
 int main() {
     int kiek;
     cout << "Studentų skaičius: ";
