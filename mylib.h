@@ -13,5 +13,5 @@ struct studentas {
     string vardas, pavarde;
     int egz;
     vector<int> pazymiai;
-    double galvid, galmed, mediana;
+    double galvid, galmed;
 };
