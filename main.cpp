@@ -22,7 +22,7 @@ void apieStudenta(studentas &studentas) {
     cout << endl << "Vardas ir pavardė: ";
     cin >> studentas.vardas >> studentas.pavarde;
     string arAtsitiktinai;
-    cout << "Ar namų darbai generuojami atsitiktinai (spausti a), ar įvedami ranka (spausti r)? " << endl;
+    cout << "Ar namų darbai generuojami atsitiktinai (spausti 'a'), ar įvedami ranka (spausti 'r')? ";
     cin >> arAtsitiktinai;
     if (arAtsitiktinai == "a") {
         //atsitiktiniai namu darbu pazymiai
@@ -43,21 +43,26 @@ void apieStudenta(studentas &studentas) {
                 }
             } else {
                 pazymys = stoi(p);
+                while (pazymys < 1 || pazymys > 10) {
+                    cerr << "Netinkamas pažymys. Įveskite pažymį nuo 1 iki 10. " << endl;
+                    cin >> pazymys;
+                }
                 studentas.pazymiai.push_back(pazymys);
             }
         }
     }
     cout << "Egzamino rezultatas: ";
     cin >> studentas.egz;
-    if (studentas.egz > 10 || studentas.egz < 1) {
-        cerr << "Netinkamas pažymys " << endl;
-    } 
+    while (studentas.egz < 1 || studentas.egz > 10) {
+        cerr << "Netinkamas pažymys. Įveskite egzamino rezultatą nuo 1 iki 10. ";
+        cin >> studentas.egz;
+    }
     studentas.galvid = vidurkis(studentas.pazymiai, studentas.egz);
     studentas.galmed = mediana(studentas.pazymiai, studentas.egz);
 }
 vector<studentas> isFailo() {
     vector<studentas> studentai;
-    ifstream file("failas3.txt");
+    ifstream file("kursiokai.txt");
     if (!file.is_open()) {
         cerr << "Nepavyko atidaryti failo." << endl;
     }
@@ -99,25 +104,32 @@ int main() {
             apieStudenta(s);
             studentai.push_back(s);
         }
+        string vidmed;
+        cout << "Galutinis balas pagal vidurkį (spausti 'v') ar medianą (spausti 'm')? ";
+        cin >> vidmed;
+        //printina lentele
+        if (vidmed == "v") {
+            cout << left << setw(15) << "Vardas" << setw(15) << "Pavardė" << setw(10) << "Galutinis (vid.)" << endl << 
+            "---------------------------------------------" << endl;
+            for (int i = 0; i < studentai.size(); i++) {
+                cout << left << setw(15) << studentai[i].vardas << setw(15) << studentai[i].pavarde << setprecision(2) << studentai[i].galvid;
+                cout << endl;
+            }
+        } else if (vidmed == "m") {
+            cout << left << setw(15) << "Vardas" << setw(15) << "Pavardė" << setw(10) << "Galutinis (med.)" << endl << 
+            "---------------------------------------------" << endl;
+            for (int i = 0; i < studentai.size(); i++) {
+                cout << left << setw(15) << studentai[i].vardas << setw(15) << studentai[i].pavarde << setprecision(2) << studentai[i].galmed;
+                cout << endl;
+            }
+        }
     } else if (duomenys == "f") {
         studentai = isFailo();
-    }
-    string vidmed;
-    cout << "Galutinis balas pagal vidurkį (spausti 'v') ar medianą (spausti 'm')? ";
-    cin >> vidmed;
-    //printina lentele
-    if (vidmed == "v") {
-        cout << left << setw(15) << "Vardas" << setw(15) << "Pavardė" << setw(10) << "Galutinis (vid.)" << endl << 
-        "---------------------------------------" << endl;
+        cout << left << setw(15) << "Vardas" << setw(15) << "Pavardė" << setw(15) << "Galutinis(vid.) " << setw(15) << "Galutinis(med.) " << endl << 
+        "--------------------------------------------------------------" << endl;
         for (int i = 0; i < studentai.size(); i++) {
-            cout << left << setw(15) << studentai[i].vardas << setw(15) << studentai[i].pavarde << setprecision(2) << studentai[i].galvid;
-            cout << endl;
-        }
-    } else if (vidmed == "m") {
-        cout << left << setw(15) << "Vardas" << setw(15) << "Pavardė" << setw(10) << "Galutinis (med.)" << endl << 
-        "---------------------------------------" << endl;
-        for (int i = 0; i < studentai.size(); i++) {
-            cout << left << setw(15) << studentai[i].vardas << setw(15) << studentai[i].pavarde << setprecision(2) << studentai[i].galmed;
+            cout << left << setw(15) << studentai[i].vardas << setw(15) << studentai[i].pavarde 
+            << setw(15) << setprecision(2) << studentai[i].galvid << setw(15) << setprecision(2) << studentai[i].galmed;
             cout << endl;
         }
     }
