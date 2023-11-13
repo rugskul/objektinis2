@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iomanip>
+#include <stdexcept>
 
 using namespace std;
 

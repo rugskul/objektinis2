@@ -24,40 +24,53 @@ void apieStudenta(studentas &studentas) {
     cin >> studentas.vardas >> studentas.pavarde;
     string arAtsitiktinai;
     cout << "Ar namų darbai generuojami atsitiktinai (spausti 'a'), ar įvedami ranka (spausti 'r')? ";
-    cin >> arAtsitiktinai;
-    if (arAtsitiktinai == "a") {
-        //atsitiktiniai namu darbu pazymiai
-        srand(time(0));
-        for (int j = 0; j < rand()%10+1; j++) {
-            studentas.pazymiai.push_back(rand() % 10 + 1);
-        }        
-    } else if (arAtsitiktinai == "r") {
-        //pazymiu ivedimas su enter
-        cout << "Namų darbų pažymiai (baigti 2 kartus paspaudus ENTER): " << endl;
-        int pazymys;
-        string p;
-        while (true) {
-            getline(cin, p);
-            if (p.empty()) {
-                if (cin.peek() == '\n') {
-                    break;
+    do {
+        cin >> arAtsitiktinai;
+        if (arAtsitiktinai == "a") {
+            //atsitiktiniai namu darbu pazymiai
+            srand(time(0));
+            for (int j = 0; j < rand()%10+1; j++) {
+                studentas.pazymiai.push_back(rand() % 10 + 1);
+            }        
+        } else if (arAtsitiktinai == "r") {
+            //pazymiu ivedimas su enter
+            cout << "Namų darbų pažymiai (baigti 2 kartus paspaudus ENTER): " << endl;
+            int pazymys;
+            while (true) {
+                string p;
+                getline(cin, p);
+                if (p.empty()) {
+                    if (cin.peek() == '\n') {
+                        break;
+                    }
+                } else {
+                    try {
+                        int pazymys = stoi(p);
+                        if (pazymys < 1 || pazymys > 10) {
+                            cerr << "Netinkamas pažymys. Įveskite pažymį nuo 1 iki 10. " << endl;
+                        } else {
+                            studentas.pazymiai.push_back(pazymys);
+                        }
+                    } catch (const invalid_argument& e) {
+                        cerr << "Netinkamas pažymys. Įveskite skaičių." << endl;
+                    }
                 }
-            } else {
-                pazymys = stoi(p);
-                while (pazymys < 1 || pazymys > 10) {
-                    cerr << "Netinkamas pažymys. Įveskite pažymį nuo 1 iki 10. " << endl;
-                    cin >> pazymys;
-                }
-                studentas.pazymiai.push_back(pazymys);
             }
+        } else {
+            cerr << "Įveskite 'a' arba 'r' ";
         }
-    }
-    cout << "Egzamino rezultatas: ";
-    cin >> studentas.egz;
-    while (studentas.egz < 1 || studentas.egz > 10) {
-        cerr << "Netinkamas pažymys. Įveskite egzamino rezultatą nuo 1 iki 10. ";
+    } while (arAtsitiktinai != "a" && arAtsitiktinai != "r");
+    do {
+        cout << "Egzamino rezultatas: ";
         cin >> studentas.egz;
-    }
+        if (cin.fail() || studentas.egz < 1 || studentas.egz > 10) {
+            cerr << "Netinkamas pažymys. Iveskite skaičių nuo 1 iki 10." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        } else {
+            break;
+        }
+    } while (true);
     studentas.galvid = vidurkis(studentas.pazymiai, studentas.egz);
     studentas.galmed = mediana(studentas.pazymiai, studentas.egz);
 }
