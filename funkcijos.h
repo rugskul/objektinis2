@@ -10,6 +10,7 @@
 #include <iomanip>
 #include <stdexcept>
 #include <utility>
+#include <list>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ struct studentas {
     double galvid, galmed;
 };
 
+template <typename Container>
 void timer();
 
 template <typename Container>
@@ -29,7 +31,7 @@ void iFaila(Container studentai, string pavadinimas);
 
 double vidurkis(vector<int>, int);
 double mediana(vector<int>, int);
-void apieStudenta(studentas);
+void apieStudenta(studentas&);
 template <typename Container>
 pair<Container, Container> skirstymas(Container studentai);
 

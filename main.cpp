@@ -2,12 +2,18 @@
 #include <iomanip>
 
 int main() {
-    string time, duomenys;
+    string time, duomenys, vectorlist;
     vector<studentas> studentai;
     cout << endl << "Ar rodyti programos veikimo greičio analizę? Jei taip - spausti 't', o jei ne - spausti bet ką kitą. ";
     cin >> time;
     if (time == "t") {
-        timer();
+        cout << "Kokį konteinerį naudoti?" << endl << "     std::vector<studentas> (spausti 'v')" << endl << "     std:list<studentas> (spausti l)" << endl;
+        cin >> vectorlist;
+        if (vectorlist == "v") {
+            timer<vector<studentas>>();
+        } else if (vectorlist == "l") {
+            timer<list<studentas>>();
+        }
     }
     cout << "Studentų duomenys bus įvedami ranka (spausti 'r') ar nuskaitomi iš failo (spausti 'f')? ";
     do {

@@ -22,6 +22,8 @@ int failoGeneravimas(int kiek) {
     cout << "Failas kursiokai" << to_string(kiek) << ".txt" <<  " sugeneruotas. " << endl;
     return 0;
 }
+
+template <typename Container>
 void timer() {
     string arGen;
     cout << "Ar generuoti studentų failus? Jei taip - spausti 'g', o jei ne - spausti bet ką kitą. ";
@@ -34,6 +36,7 @@ void timer() {
         failoGeneravimas(1000000);
         failoGeneravimas(10000000);
     }
+
     cout << endl << "PROGRAMOS VEIKIMO GREIČIO ANALIZĖ: " << endl << endl;
 
     for(int i = 1000; i <= 100000; i = i * 10){
@@ -44,11 +47,11 @@ void timer() {
         auto start0 = chrono::high_resolution_clock::now();
 
         auto start1 = chrono::high_resolution_clock::now();
-        vector<studentas> studentai = isFailo<vector<studentas>>(pavadinimas);
+        Container studentai = isFailo<Container>(pavadinimas);
         auto stop1 = chrono::high_resolution_clock::now();
 
         auto start2 = chrono::high_resolution_clock::now();
-        pair<vector<studentas>,vector<studentas>> suskirstyti = skirstymas(studentai);
+        pair<Container, Container> suskirstyti = skirstymas(studentai);
         auto stop2 = chrono::high_resolution_clock::now();
 
         auto start3 = chrono::high_resolution_clock::now();
@@ -74,3 +77,5 @@ void timer() {
         << "Viso testo laikas: " << trukme0.count() << endl << endl;
     }
 }
+template void timer<vector<studentas>>();
+template void timer<list<studentas>>();

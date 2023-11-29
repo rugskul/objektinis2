@@ -35,22 +35,27 @@ Container isFailo(string pavadinimas) {
     return studentai;
 }
 template vector<studentas> isFailo(string pavadinimas);
+template list<studentas> isFailo(string pavadinimas);
 
 template <typename Container>
 void iFaila(Container studentai, string pavadinimas) {
     ofstream outFile(pavadinimas);
+
     outFile << "Vardas Pavardė";
-    for (int i = 1; i <= studentai[0].pazymiai.size(); ++i) {
+    for (int i = 1; i <= studentai.begin()->pazymiai.size(); ++i) {
         outFile << " ND" << i;
     }
     outFile << " Egz." << endl;
-    for (int i = 0; i < studentai.size(); i++) {
-        outFile << studentai[i].vardas << " " << studentai[i].pavarde << " ";
-        for (int j = 0; j < studentai[i].pazymiai.size(); j++) {
-            outFile << studentai[i].pazymiai[j] << " ";
+
+    for (auto studentas : studentai) {
+        outFile << studentas.vardas << " " << studentas.pavarde << " ";
+        for (int pazymys : studentas.pazymiai) {
+            outFile << pazymys << " ";
         }
-        outFile << studentai[i].egz << endl;
+        outFile << studentas.egz << endl;
     }
+
     outFile.close();
 }
-template void iFaila(vector<studentas> studentai, string pavadinimas);
+template void iFaila(vector<studentas> v, string pavadinimas);
+template void iFaila(list<studentas> v, string pavadinimas);

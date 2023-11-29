@@ -80,13 +80,14 @@ pair<Container, Container> skirstymas(Container studentai) {
     using Studentas = typename Container::value_type;
     Container vargsiukai;
     Container kietekai;
-    for (int i = 0; i < studentai.size(); i++) {
-        if (studentai[i].galvid > 5) {
-            kietekai.push_back(studentai[i]);
+    for (auto studentas : studentai) {
+        if (studentas.galvid > 5) {
+            kietekai.push_back(studentas);
         } else {
-            vargsiukai.push_back(studentai[i]);
+            vargsiukai.push_back(studentas);
         }
     }
     return make_pair(vargsiukai, kietekai);
 }
 template pair<vector<studentas>, vector<studentas>> skirstymas(vector<studentas> studentai);
+template pair<list<studentas>, list<studentas>> skirstymas(list<studentas> studentai);
