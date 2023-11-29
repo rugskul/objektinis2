@@ -4,7 +4,6 @@
 int main() {
     string time, duomenys;
     vector<studentas> studentai;
-    bool input = false;
     cout << endl << "Ar rodyti programos veikimo greičio analizę? Jei taip - spausti 't', o jei ne - spausti bet ką kitą. ";
     cin >> time;
     if (time == "t") {
@@ -44,7 +43,7 @@ int main() {
             string pavadinimas;
             cout << "Failo pavadinimas: ";
             cin >> pavadinimas;
-            studentai = isFailo(pavadinimas);
+            studentai = isFailo<vector<studentas>>(pavadinimas);
             printf(studentai);
         } else {
             cerr << "Įveskite 'r' arba 'f'. ";

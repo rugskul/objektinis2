@@ -1,13 +1,18 @@
 #include "funkcijos.h"
 
-vector<studentas> isFailo(string pavadinimas) {
-    vector<studentas> studentai;
+template <typename Container>
+Container isFailo(string pavadinimas) {
+    Container studentai;
     ifstream file(pavadinimas);
+    
     if (!file.is_open()) {
         cerr << "Nepavyko atidaryti failo." << endl;
+        return studentai;
     }
+
     string pirma;
     getline(file, pirma);
+
     string line;
     while (getline(file, line)) {
         istringstream iss(line);
@@ -29,20 +34,23 @@ vector<studentas> isFailo(string pavadinimas) {
     file.close();
     return studentai;
 }
+template vector<studentas> isFailo(string pavadinimas);
 
-void iFaila(vector<studentas> v, string pavadinimas) {
+template <typename Container>
+void iFaila(Container studentai, string pavadinimas) {
     ofstream outFile(pavadinimas);
     outFile << "Vardas Pavardė";
-    for (int i = 1; i <= v[0].pazymiai.size(); ++i) {
+    for (int i = 1; i <= studentai[0].pazymiai.size(); ++i) {
         outFile << " ND" << i;
     }
     outFile << " Egz." << endl;
-    for (int i = 0; i < v.size(); i++) {
-        outFile << v[i].vardas << " " << v[i].pavarde << " ";
-        for (int j = 0; j < v[i].pazymiai.size(); j++) {
-            outFile << v[i].pazymiai[j] << " ";
+    for (int i = 0; i < studentai.size(); i++) {
+        outFile << studentai[i].vardas << " " << studentai[i].pavarde << " ";
+        for (int j = 0; j < studentai[i].pazymiai.size(); j++) {
+            outFile << studentai[i].pazymiai[j] << " ";
         }
-        outFile << v[i].egz << endl;
+        outFile << studentai[i].egz << endl;
     }
     outFile.close();
 }
+template void iFaila(vector<studentas> studentai, string pavadinimas);

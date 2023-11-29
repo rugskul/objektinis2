@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <stdexcept>
+#include <utility>
 
 using namespace std;
 
@@ -21,13 +22,16 @@ struct studentas {
 
 void timer();
 
-vector<studentas> isFailo(string);
-void iFaila(vector<studentas>, string);
+template <typename Container>
+Container isFailo(string pavadinimas);
+template <typename Container>
+void iFaila(Container studentai, string pavadinimas);
 
 double vidurkis(vector<int>, int);
 double mediana(vector<int>, int);
-void apieStudenta(studentas&);
-vector<vector<studentas>> skirstymas(vector<studentas>);
+void apieStudenta(studentas);
+template <typename Container>
+pair<Container, Container> skirstymas(Container studentai);
 
 void printr(vector<studentas>, string);
 void printf(vector<studentas>);

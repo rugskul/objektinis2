@@ -44,19 +44,19 @@ void timer() {
         auto start0 = chrono::high_resolution_clock::now();
 
         auto start1 = chrono::high_resolution_clock::now();
-        vector<studentas> studentai = isFailo(pavadinimas);
+        vector<studentas> studentai = isFailo<vector<studentas>>(pavadinimas);
         auto stop1 = chrono::high_resolution_clock::now();
 
         auto start2 = chrono::high_resolution_clock::now();
-        vector<vector<studentas>> suskirstyti = skirstymas(studentai);
+        pair<vector<studentas>,vector<studentas>> suskirstyti = skirstymas(studentai);
         auto stop2 = chrono::high_resolution_clock::now();
 
         auto start3 = chrono::high_resolution_clock::now();
-        iFaila(suskirstyti[0], vargsiukai);
+        iFaila(suskirstyti.first, vargsiukai);
         auto stop3 = chrono::high_resolution_clock::now();
 
         auto start4 = chrono::high_resolution_clock::now();
-        iFaila(suskirstyti[1], kietekai);
+        iFaila(suskirstyti.second, kietekai);
         auto stop4 = chrono::high_resolution_clock::now();
 
         auto stop0 = chrono::high_resolution_clock::now();

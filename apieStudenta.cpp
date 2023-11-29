@@ -75,9 +75,11 @@ void apieStudenta(studentas &studentas) {
     studentas.galmed = mediana(studentas.pazymiai, studentas.egz);
 }
 
-vector<vector<studentas>> skirstymas(vector<studentas> studentai) {
-    vector<studentas> vargsiukai;
-    vector<studentas> kietekai;
+template <typename Container>
+pair<Container, Container> skirstymas(Container studentai) {
+    using Studentas = typename Container::value_type;
+    Container vargsiukai;
+    Container kietekai;
     for (int i = 0; i < studentai.size(); i++) {
         if (studentai[i].galvid > 5) {
             kietekai.push_back(studentai[i]);
@@ -85,6 +87,6 @@ vector<vector<studentas>> skirstymas(vector<studentas> studentai) {
             vargsiukai.push_back(studentai[i]);
         }
     }
-    vector<vector<studentas>> suskirstyti = {vargsiukai, kietekai};
-    return suskirstyti;
+    return make_pair(vargsiukai, kietekai);
 }
+template pair<vector<studentas>, vector<studentas>> skirstymas(vector<studentas> studentai);
