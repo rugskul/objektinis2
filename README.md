@@ -13,7 +13,7 @@ Atlikta programos veikimo greičio analizė priklausomai nuo naudojamo std::vect
 |-------------|------------|------------|------------|------------|------------|
 | viso testo laikas  | 0.0466783  | 2.49527    | 24.3772    | 247.079    | 2215.49    |
 | failo nuskaitymas  | 0.173681   | 0.876461   | 7.21207    | 74.1672    | 396.269    |
-| rūšiavimas į dvi grupe | 0.0077262  | 1.2275     | 9.27262    | 87.9569    | 955.315    |
+| rūšiavimas į dvi grupes | 0.0077262  | 1.2275     | 9.27262    | 87.9569    | 955.315    |
 | vargšiukų surašymas į failą  | 0.0111052  | 0.146003   | 3.15828    | 40.7217    | 415.666    |
 | kietekų surašymas į failą  | 0.0104786  | 0.245314   | 4.73423    | 44.2331    | 448.243    |
 
@@ -22,7 +22,7 @@ Atlikta programos veikimo greičio analizė priklausomai nuo naudojamo std::vect
 |----------------|------------|------------|------------|------------|------------|
 | viso testo laikas     | 0.128716   | 5.14071    | 24.0981    | 235.981    | 6393.04    |
 | failo nuskaitymas | 0.0092561  | 3.37145    | 5.67912    | 32.259     | 495.206    |
-| rūšiavimas į dvi grupe    | 0.0264714  | 0.756946   | 8.63328    | 94.1819    | 4632.75    |
+| rūšiavimas į dvi grupes    | 0.0264714  | 0.756946   | 8.63328    | 94.1819    | 4632.75    |
 | vargšiukų surašymas į failą     | 0.0439729  | 0.546911   | 4.85692    | 56.1709    | 639.43     |
 | kietekų surašymas į failą     | 0.0490157  | 0.465397   | 4.9288     | 53.2688    | 625.654    |
 
