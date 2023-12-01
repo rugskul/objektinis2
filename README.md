@@ -9,13 +9,14 @@ Sugeneruoti 5 atsitiktiniai studentų sąrašų failai, sudaryti iš: 1 000, 1
 # v0.3
 Atlikta programos veikimo greičio analizė priklausomai nuo naudojamo std::vector arba std::list konteinerio. Testavimas atliekamas su prieš tai sugeneruotais failais.
 
-| Vector  | 1000 | 10000 | 100000 | 1000000 | 10000000 |
-| ------------- | ------------- |
-| viso testo laikas | 0.0466783  | 2.49527 | 24.3772 | 247.079 | 2215.49 |
-| failo nuskaitymas  | 0.173681 | 0.876461 | 7.21207 | 74.1672 | 396.269 |
-| rūšiavimas į dvi grupes | 0.0077262 | 1.2275 | 9.27262 | 87.9569 | 955.315 |
-| vargšiukų surašymas į failą | 0.0111052 | 0.146003 | 3.15828 | 40.7217 | 415.666 |
-| kietekų surašymas į failą | 0.0104786 | 0.245314 | 4.73423 | 44.2331 | 448.243 |
+| Vector      | 1000       | 10000      | 100000     | 1000000    | 10000000   |
+|-------------|------------|------------|------------|------------|------------|
+| viso testo laikas  | 0.0466783  | 2.49527    | 24.3772    | 247.079    | 2215.49    |
+| failo nuskaitymas  | 0.173681   | 0.876461   | 7.21207    | 74.1672    | 396.269    |
+| rūšiavimas į dvi grupe | 0.0077262  | 1.2275     | 9.27262    | 87.9569    | 955.315    |
+| vargšiukų surašymas į failą  | 0.0111052  | 0.146003   | 3.15828    | 40.7217    | 415.666    |
+| kietekų surašymas į failą  | 0.0104786  | 0.245314   | 4.73423    | 44.2331    | 448.243    |
+
 
 | List  | 1000 | 10000 | 100000 | 1000000 | 10000000 |
 | ------------- | ------------- |
