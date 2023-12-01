@@ -39,7 +39,7 @@ void timer() {
 
     cout << endl << "PROGRAMOS VEIKIMO GREIČIO ANALIZĖ: " << endl << endl;
 
-    for(int i = 1000; i <= 100000; i = i * 10){
+    for(int i = 1000; i <= 10000000; i = i * 10){
         string pavadinimas = "kursiokai" + to_string(i) + ".txt";
         string vargsiukai = "vargsiukai" + to_string(i) + ".txt";
         string kietekai = "kietekai" + to_string(i) + ".txt";

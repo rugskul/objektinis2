@@ -1,5 +1,4 @@
 #include "funkcijos.h"
-#include <iomanip>
 
 int main() {
     string time, duomenys, vectorlist;
@@ -8,12 +7,16 @@ int main() {
     cin >> time;
     if (time == "t") {
         cout << "Kokį konteinerį naudoti?" << endl << "     std::vector<studentas> (spausti 'v')" << endl << "     std:list<studentas> (spausti l)" << endl;
-        cin >> vectorlist;
-        if (vectorlist == "v") {
-            timer<vector<studentas>>();
-        } else if (vectorlist == "l") {
-            timer<list<studentas>>();
-        }
+        do {
+            cin >> vectorlist;
+            if (vectorlist == "v") {
+                timer<vector<studentas>>();
+            } else if (vectorlist == "l") {
+                timer<list<studentas>>();
+            } else {
+                cerr << "Įveskite 'v' arba 'l'. ";
+            }
+        } while (vectorlist != "v" && vectorlist != "l");
     }
     cout << "Studentų duomenys bus įvedami ranka (spausti 'r') ar nuskaitomi iš failo (spausti 'f')? ";
     do {
