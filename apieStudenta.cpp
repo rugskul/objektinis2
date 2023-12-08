@@ -27,11 +27,12 @@ void apieStudenta(studentas &studentas) {
     do {
         cin >> arAtsitiktinai;
         if (arAtsitiktinai == "a") {
-            //atsitiktiniai namu darbu pazymiai
+            //atsitiktiniai namu darbu pazymiai ir egzamino rezultatas
             srand(time(0));
             for (int j = 0; j < rand()%10+1; j++) {
                 studentas.pazymiai.push_back(rand() % 10 + 1);
-            }        
+            }
+            studentas.egz = rand() % 10 + 1;
         } else if (arAtsitiktinai == "r") {
             //pazymiu ivedimas su enter
             cout << "Namų darbų pažymiai (baigti 2 kartus paspaudus ENTER): " << endl;
@@ -56,38 +57,21 @@ void apieStudenta(studentas &studentas) {
                     }
                 }
             }
+            do {
+                cout << "Egzamino rezultatas: ";
+                cin >> studentas.egz;
+                if (cin.fail() || studentas.egz < 1 || studentas.egz > 10) {
+                    cerr << "Netinkamas pažymys. Iveskite skaičių nuo 1 iki 10." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                } else {
+                    break;
+                }
+            } while (true);
         } else {
             cerr << "Įveskite 'a' arba 'r' ";
         }
     } while (arAtsitiktinai != "a" && arAtsitiktinai != "r");
-    do {
-        cout << "Egzamino rezultatas: ";
-        cin >> studentas.egz;
-        if (cin.fail() || studentas.egz < 1 || studentas.egz > 10) {
-            cerr << "Netinkamas pažymys. Iveskite skaičių nuo 1 iki 10." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        } else {
-            break;
-        }
-    } while (true);
     studentas.galvid = vidurkis(studentas.pazymiai, studentas.egz);
     studentas.galmed = mediana(studentas.pazymiai, studentas.egz);
 }
-
-template <typename Container>
-pair<Container, Container> skirstymas(Container studentai) {
-    using Studentas = typename Container::value_type;
-    Container vargsiukai;
-    Container kietekai;
-    for (auto studentas : studentai) {
-        if (studentas.galvid > 5) {
-            kietekai.push_back(studentas);
-        } else {
-            vargsiukai.push_back(studentas);
-        }
-    }
-    return make_pair(vargsiukai, kietekai);
-}
-template pair<vector<studentas>, vector<studentas>> skirstymas(vector<studentas> studentai);
-template pair<list<studentas>, list<studentas>> skirstymas(list<studentas> studentai);

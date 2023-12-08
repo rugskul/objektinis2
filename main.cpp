@@ -10,9 +10,9 @@ int main() {
         do {
             cin >> vectorlist;
             if (vectorlist == "v") {
-                timer<vector<studentas>>();
+                timer<vector<studentas>>("v");
             } else if (vectorlist == "l") {
-                timer<list<studentas>>();
+                timer<list<studentas>>("l");
             } else {
                 cerr << "Įveskite 'v' arba 'l'. ";
             }
@@ -48,6 +48,8 @@ int main() {
                 }
             } while (vidmed != "v" && vidmed != "m");
             printr(studentai, vidmed);
+            //pointeris
+            cout << "Studentų vektoriaus saugojimo atmintyje adresas: " << &studentai << endl;
         } else if (duomenys == "f") {
             string pavadinimas;
             cout << "Failo pavadinimas: ";

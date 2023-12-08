@@ -22,18 +22,21 @@ struct studentas {
 };
 
 template <typename Container>
-void timer();
+void timer(string);
 
 template <typename Container>
-Container isFailo(string pavadinimas);
+Container isFailo(string);
 template <typename Container>
-void iFaila(Container studentai, string pavadinimas);
+void iFaila(Container, string);
 
 double vidurkis(vector<int>, int);
 double mediana(vector<int>, int);
 void apieStudenta(studentas&);
+
 template <typename Container>
-pair<Container, Container> skirstymas(Container studentai);
+pair<Container, Container> skirstymas(Container);
+void sortStudentai(vector<studentas>&, string);
+void sortStudentai(list<studentas>&, string);
 
 void printr(vector<studentas>, string);
 void printf(vector<studentas>);
