@@ -25,7 +25,8 @@ int failoGeneravimas(int kiek) {
 
 template <typename Container>
 void timer(string konteineris) {
-    string arGen, pagal;
+    string arGen, pagal, strategija;
+    chrono::duration<double> trukme0, trukme1, trukme2, trukme3, trukme4;
     cout << "Ar generuoti studentų failus? Jei taip - spausti 'g', o jei ne - spausti bet ką kitą. ";
     cin >> arGen;
     cout << endl;
@@ -36,6 +37,9 @@ void timer(string konteineris) {
         failoGeneravimas(1000000);
         failoGeneravimas(10000000);
     }
+
+    cout << "Kurią rūšiavimo strategiją naudoti (1 arba 2)? " << endl;
+    cin >> strategija;
     cout << "Rūšiuoti duomenis pagal vardą (spausti 1), pavardę (spausti 2) ar galutinį balą (spausti 3)? ";
     cin >> pagal;
 
@@ -46,33 +50,67 @@ void timer(string konteineris) {
         string vargsiukai = "vargsiukai" + to_string(i) + ".txt";
         string kietekai = "kietekai" + to_string(i) + ".txt";
 
-        auto start0 = chrono::high_resolution_clock::now();
+        if(strategija == "1"){
 
-        auto start1 = chrono::high_resolution_clock::now();
-        Container studentai = isFailo<Container>(pavadinimas);
-        auto stop1 = chrono::high_resolution_clock::now();
+            auto start0 = chrono::high_resolution_clock::now();
 
-        sortStudentai(studentai, pagal);
+            auto start1 = chrono::high_resolution_clock::now();
+            Container studentai = isFailo<Container>(pavadinimas);
+            auto stop1 = chrono::high_resolution_clock::now();
 
-        auto start2 = chrono::high_resolution_clock::now();
-        pair<Container, Container> suskirstyti = skirstymas(studentai);
-        auto stop2 = chrono::high_resolution_clock::now();
+            sortStudentai(studentai, pagal);
 
-        auto start3 = chrono::high_resolution_clock::now();
-        iFaila(suskirstyti.first, vargsiukai);
-        auto stop3 = chrono::high_resolution_clock::now();
+            auto start2 = chrono::high_resolution_clock::now();
+            pair<Container, Container> suskirstyti = skirstymas1(studentai);
+            auto stop2 = chrono::high_resolution_clock::now();
 
-        auto start4 = chrono::high_resolution_clock::now();
-        iFaila(suskirstyti.second, kietekai);
-        auto stop4 = chrono::high_resolution_clock::now();
+            auto start3 = chrono::high_resolution_clock::now();
+            iFaila(suskirstyti.first, vargsiukai);
+            auto stop3 = chrono::high_resolution_clock::now();
 
-        auto stop0 = chrono::high_resolution_clock::now();
+            auto start4 = chrono::high_resolution_clock::now();
+            iFaila(suskirstyti.second, kietekai);
+            auto stop4 = chrono::high_resolution_clock::now();
 
-        chrono::duration<double> trukme0 = stop0 - start0;
-        chrono::duration<double> trukme1 = stop1 - start1;
-        chrono::duration<double> trukme2 = stop2 - start2;
-        chrono::duration<double> trukme3 = stop3 - start3;
-        chrono::duration<double> trukme4 = stop4 - start4;
+            auto stop0 = chrono::high_resolution_clock::now();
+
+            trukme0 = stop0 - start0;
+            trukme1 = stop1 - start1;
+            trukme2 = stop2 - start2;
+            trukme3 = stop3 - start3;
+            trukme4 = stop4 - start4;
+
+        } else if(strategija == "2"){
+
+            auto start0 = chrono::high_resolution_clock::now();
+
+            auto start1 = chrono::high_resolution_clock::now();
+            Container studentai = isFailo<Container>(pavadinimas);
+            auto stop1 = chrono::high_resolution_clock::now();
+
+            sortStudentai(studentai, pagal);
+
+            auto start2 = chrono::high_resolution_clock::now();
+            Container vargsiuk = skirstymas2(studentai);
+            auto stop2 = chrono::high_resolution_clock::now();
+
+            auto start3 = chrono::high_resolution_clock::now();
+            iFaila(vargsiuk, vargsiukai);
+            auto stop3 = chrono::high_resolution_clock::now();
+
+            auto start4 = chrono::high_resolution_clock::now();
+            iFaila(studentai, kietekai);
+            auto stop4 = chrono::high_resolution_clock::now();
+
+            auto stop0 = chrono::high_resolution_clock::now();
+
+            trukme0 = stop0 - start0;
+            trukme1 = stop1 - start1;
+            trukme2 = stop2 - start2;
+            trukme3 = stop3 - start3;
+            trukme4 = stop4 - start4;
+
+        }
 
         cout << "Failo " << pavadinimas << " nuskaitymo laikas: " << trukme1.count() << endl
         << "Studentu rusiavimo i dvi grupes laikas: " << trukme2.count() << endl
