@@ -1,21 +1,5 @@
 #include "funkcijos.h"
 
-// template <typename Container>
-// pair<Container, Container> skirstymas(Container studentai) {
-//     Container vargsiukai;
-//     Container kietekai;
-//     for (auto studentas : studentai) {
-//         if (studentas.galvid > 5) {
-//             kietekai.push_back(studentas);
-//         } else {
-//             vargsiukai.push_back(studentas);
-//         }
-//     }
-//     return make_pair(vargsiukai, kietekai);
-// }
-// template pair<vector<studentas>, vector<studentas>> skirstymas(vector<studentas> studentai);
-// template pair<list<studentas>, list<studentas>> skirstymas(list<studentas> studentai);
-
 bool sortVardas(studentas a, studentas b) {
     return a.vardas < b.vardas;
 }

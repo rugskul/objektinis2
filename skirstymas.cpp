@@ -1,22 +1,5 @@
 #include "funkcijos.h"
 
-// template <typename Container>
-// pair<Container, Container> skirstymas(Container studentai) {
-//     using Studentas = typename Container::value_type;
-//     Container vargsiukai;
-//     Container kietekai;
-//     for (auto studentas : studentai) {
-//         if (studentas.galvid > 5) {
-//             kietekai.push_back(studentas);
-//         } else {
-//             vargsiukai.push_back(studentas);
-//         }
-//     }
-//     return make_pair(vargsiukai, kietekai);
-// }
-// template pair<vector<studentas>, vector<studentas>> skirstymas(vector<studentas> studentai);
-// template pair<list<studentas>, list<studentas>> skirstymas(list<studentas> studentai);
-
 template <typename Container>
 pair<Container, Container> skirstymas1(Container studentai) {
     Container vargsiukai;
@@ -49,3 +32,13 @@ Container skirstymas2(Container& studentai) {
 }
 template vector<studentas> skirstymas2(vector<studentas>& studentai);
 template list<studentas> skirstymas2(list<studentas>& studentai);
+
+vector<studentas> skirstymas3(vector<studentas>& studentai) {
+    vector<studentas> vargsiukai;
+    auto partitionIt = partition(studentai.begin(), studentai.end(),
+        [](const studentas& student) { return student.galvid <= 5; });
+    move(partitionIt, studentai.end(), back_inserter(vargsiukai));
+    studentai.erase(partitionIt, studentai.end());
+
+    return vargsiukai;
+}

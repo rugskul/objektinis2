@@ -41,12 +41,12 @@ void timer(string konteineris) {
 
     cout << "Rūšiuoti duomenis pagal vardą (spausti 1), pavardę (spausti 2) ar galutinį balą (spausti 3)? ";
     cin >> pagal;
-    cout << "Kurią strategiją naudoti (1 ar 2)? " << endl;
+    cout << "Kurią strategiją naudoti (1, 2 ar 3)? " << endl;
     cin >> strategija;
 
     cout << endl << "PROGRAMOS VEIKIMO GREIČIO ANALIZĖ: " << endl << endl;
 
-    for(int i = 1000; i <= 10000; i = i * 10){
+    for (int i = 1000; i <= 100000; i = i * 10) {
         string pavadinimas = "kursiokai" + to_string(i) + ".txt";
         string vargsiukai = "vargsiukai" + to_string(i) + ".txt";
         string kietekai = "kietekai" + to_string(i) + ".txt";
@@ -98,6 +98,30 @@ void timer(string konteineris) {
             stop4 = chrono::high_resolution_clock::now();
 
             stop0 = chrono::high_resolution_clock::now();
+            
+        } else if (strategija == "3") {
+
+            start0 = chrono::high_resolution_clock::now();
+
+            start1 = chrono::high_resolution_clock::now();
+            vector<studentas> studentai = isFailo<vector<studentas>>(pavadinimas);
+            stop1 = chrono::high_resolution_clock::now();
+
+            sortStudentai(studentai, pagal);
+
+            start2 = chrono::high_resolution_clock::now();
+            vector<studentas> vargsiukaii = skirstymas3(studentai);
+            stop2 = chrono::high_resolution_clock::now();
+
+            start3 = chrono::high_resolution_clock::now();
+            iFaila(vargsiukaii, vargsiukai);
+            stop3 = chrono::high_resolution_clock::now();
+
+            start4 = chrono::high_resolution_clock::now();
+            iFaila(studentai, kietekai);
+            stop4 = chrono::high_resolution_clock::now();
+
+            stop0 = chrono::high_resolution_clock::now();
         }
         trukme0 = stop0 - start0;
         trukme1 = stop1 - start1;
@@ -113,4 +137,4 @@ void timer(string konteineris) {
     }
 }
 template void timer<vector<studentas>>(string konteineris);
-template void timer<list<studentas>>(string konteineris);
+template void timer<list<studentas>>(string konteineris); 

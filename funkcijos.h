@@ -33,8 +33,6 @@ double vidurkis(vector<int>, int);
 double mediana(vector<int>, int);
 void apieStudenta(studentas&);
 
-// template <typename Container>
-// pair<Container, Container> skirstymas(Container);
 void sortStudentai(vector<studentas>&, string);
 void sortStudentai(list<studentas>&, string);
 
@@ -45,3 +43,4 @@ template <typename Container>
 pair<Container, Container> skirstymas1(Container);
 template <typename Container>
 Container skirstymas2(Container&);
+vector<studentas> skirstymas3(vector<studentas>&);
