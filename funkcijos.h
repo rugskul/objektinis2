@@ -22,24 +22,26 @@ struct studentas {
 };
 
 template <typename Container>
-    void timer(string);
+void timer(string);
 
 template <typename Container>
-    Container isFailo(string);
+Container isFailo(string);
 template <typename Container>
-    void iFaila(Container, string);
+void iFaila(Container, string);
 
 double vidurkis(vector<int>, int);
 double mediana(vector<int>, int);
 void apieStudenta(studentas&);
 
-template <typename Container>
-    pair<Container, Container> skirstymas1(Container);
-template <typename Container>
-    Container skirstymas2(Container&);
-
+// template <typename Container>
+// pair<Container, Container> skirstymas(Container);
 void sortStudentai(vector<studentas>&, string);
 void sortStudentai(list<studentas>&, string);
 
 void printr(vector<studentas>, string);
 void printf(vector<studentas>);
+
+template <typename Container>
+pair<Container, Container> skirstymas1(Container);
+template <typename Container>
+Container skirstymas2(Container&);
