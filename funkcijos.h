@@ -43,4 +43,5 @@ template <typename Container>
 pair<Container, Container> skirstymas1(Container);
 template <typename Container>
 Container skirstymas2(Container&);
-vector<studentas> skirstymas3(vector<studentas>&);
+template <typename Container>
+Container skirstymas3(Container&);

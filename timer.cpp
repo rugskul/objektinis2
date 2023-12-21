@@ -41,7 +41,7 @@ void timer(string konteineris) {
 
     cout << "Rūšiuoti duomenis pagal vardą (spausti 1), pavardę (spausti 2) ar galutinį balą (spausti 3)? ";
     cin >> pagal;
-    cout << "Kurią strategiją naudoti (1, 2 ar 3)? " << endl;
+    cout << "Kurią strategiją naudoti (1, 2 ar 3)? ";
     cin >> strategija;
 
     cout << endl << "PROGRAMOS VEIKIMO GREIČIO ANALIZĖ: " << endl << endl;
@@ -104,13 +104,13 @@ void timer(string konteineris) {
             start0 = chrono::high_resolution_clock::now();
 
             start1 = chrono::high_resolution_clock::now();
-            vector<studentas> studentai = isFailo<vector<studentas>>(pavadinimas);
+            Container studentai = isFailo<Container>(pavadinimas);
             stop1 = chrono::high_resolution_clock::now();
 
             sortStudentai(studentai, pagal);
 
             start2 = chrono::high_resolution_clock::now();
-            vector<studentas> vargsiukaii = skirstymas3(studentai);
+            Container vargsiukaii = skirstymas3(studentai);
             stop2 = chrono::high_resolution_clock::now();
 
             start3 = chrono::high_resolution_clock::now();

@@ -33,12 +33,15 @@ Container skirstymas2(Container& studentai) {
 template vector<studentas> skirstymas2(vector<studentas>& studentai);
 template list<studentas> skirstymas2(list<studentas>& studentai);
 
-vector<studentas> skirstymas3(vector<studentas>& studentai) {
-    vector<studentas> vargsiukai;
-    auto partitionIt = partition(studentai.begin(), studentai.end(),
-        [](const studentas& student) { return student.galvid <= 5; });
+template <typename Container>
+Container skirstymas3(Container& studentai) {
+    Container vargsiukai;
+    auto partitionIt = stable_partition(studentai.begin(), studentai.end(),
+        [](const studentas& studentas) { return studentas.galvid <= 5; });
     move(partitionIt, studentai.end(), back_inserter(vargsiukai));
     studentai.erase(partitionIt, studentai.end());
 
     return vargsiukai;
 }
+template vector<studentas> skirstymas3(vector<studentas>& studentai);
+template list<studentas> skirstymas3(list<studentas>& studentai);
