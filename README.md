@@ -26,3 +26,22 @@ Atlikta programos veikimo greičio analizė priklausomai nuo naudojamo std::vect
 | vargšiukų surašymas į failą     | 0.0439729  | 0.546911   | 4.85692    | 56.1709    | 639.43     |
 | kietekų surašymas į failą     | 0.0490157  | 0.465397   | 4.9288     | 53.2688    | 625.654    |
 
+# v1.0
+Studentų rūšiavimas į dvi kategorijas ("vargšiukų" ir "kietekų") gali būti vykdomas 3 strategijomis:
+1. į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietekų";
+2. panaudojant tik vieną naują konteinerį: "vargšiukai";
+3. panaudojant greičiausiai veikiančią strategiją (2) įtraukiant į ją "efektyvius" darbo su konteineriais metodus.
+Padaryta programos veikimo greičio analizė priklausomai nuo pasirinktos strategijos.
+
+| Vector       | 1000       | 10000      | 100000     | 
+|----------------|------------|------------|------------|
+| 1 strategija     | 0.0586295   | 3.40423666667    | 28.0859333333    |
+| 2 strategija | 0.0762584   | 2.96730666667    | 113.093    |
+| 3 strategija  | 0.04300303333  | 1.97779333333   | 14.7547    |
+
+
+| List       | 1000       | 10000      | 100000     | 
+|----------------|------------|------------|------------|
+| 1 strategija     | 0.14869966666   | 4.99282666667    | 31.6336    |
+| 2 strategija | 0.04408363333   | 1.3294    | 15.5944666667    |
+| 3 strategija  | 0.0345008  | 1.350215   | 11.1841933333    |
