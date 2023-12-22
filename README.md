@@ -31,6 +31,8 @@ Studentų rūšiavimas į dvi kategorijas ("vargšiukų" ir "kietekų") gali bū
 1. į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietekų";
 2. panaudojant tik vieną naują konteinerį: "vargšiukai";
 3. panaudojant greičiausiai veikiančią strategiją (2) įtraukiant į ją "efektyvius" darbo su konteineriais metodus.
+
+
 Padaryta programos veikimo greičio analizė priklausomai nuo pasirinktos strategijos.
 
 | Vector       | 1000       | 10000      | 100000     | 
