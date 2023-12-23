@@ -1,4 +1,4 @@
-#include "failai.h"
+#include "funkcijos.h"
 
 int failoGeneravimas(int kiek) {
     srand(time(0));
@@ -38,6 +38,9 @@ void timer() {
     }
     cout << "Rūšiuoti duomenis pagal pavardę (spausti 1), egzamino rezultatą (spausti 2) ar galutinį balą (spausti 3)? ";
     cin >> pagal;
+    if (pagal != "1" && pagal != "2" && pagal != "3") {
+        cout << "Įvestas netinkamas rūšiavimo kriterijus. Bus rūšiuojama pagal pavardę. " << endl;
+    }
     cout << "Kurią strategiją naudoti (1, 2 ar 3)? ";
     cin >> strategija;
 

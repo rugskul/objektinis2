@@ -38,7 +38,7 @@ public:
     vector<int> getPazymiai() const { return pazymiai_; }
 
     studentas(istream& is);
-    double galBalas() const;
+    double galBalas(string vidmed) const;
     istream& readStudent(istream&);
 
 };

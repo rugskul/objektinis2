@@ -1,20 +1,34 @@
 #include "studentas.h"
 
+double vidurkis(vector<int> v) {
+    double suma = 0;
+    for (int i=0; i < v.size(); i++) {
+        suma += v[i];
+    }
+    return suma/v.size();
+}
+double mediana(vector<int> v) {
+    sort(v.begin(), v.end());
+    int n = v.size();
+    if (n % 2 == 0) {
+        return (v[(n - 1) / 2] + v[n / 2]) / 2.0;
+    } else {
+        return v[n / 2];
+    }
+}
+
 studentas::studentas(istream& is) { 
     readStudent(is);  
 }
 
-double studentas::galBalas() const {
-    double mediana;
-    vector<int> v = pazymiai_;
-    sort(v.begin(), v.end());
-    int n = v.size();
-    if (n % 2 == 0) {
-        mediana = (v[(n - 1) / 2] + v[n / 2]) / 2.0;
+double studentas::galBalas(string vidmed) const {
+    if (vidmed == "v") {
+        return 0.4*vidurkis(pazymiai_) + 0.6*egz_;
+    } else if (vidmed == "m") {
+        return 0.4*mediana(pazymiai_) + 0.6*egz_;
     } else {
-        mediana = v[n / 2];
+        throw invalid_argument("Netinkamas parametras. Iveskite 'v' arba 'm'.");
     }
-    return mediana*0.4 + egz_*0.6;
 }
 
 istream& studentas::readStudent(istream& is) {
@@ -42,5 +56,5 @@ bool compareEgzas(const studentas& a, const studentas& b) {
     return a.getEgz() < b.getEgz();
 }
 bool compareGalBalas(const studentas& a, const studentas& b) {
-    return a.galBalas() < b.galBalas();
+    return a.galBalas("v") < b.galBalas("v");
 }
