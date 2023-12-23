@@ -15,13 +15,11 @@
 using namespace std;
 
 class studentas {
-// realizacija
 private:
     string vardas_;
     string pavarde_;
     int egz_;
     vector<int> pazymiai_;
-// interfeisas
 public:
     studentas() : vardas_(""), pavarde_(""), egz_(0), pazymiai_({}) {}
     studentas(const string& vardas, const string& pavarde, const double& egz, const vector<int>& pazymiai): 
@@ -44,6 +42,6 @@ public:
     istream& readStudent(istream&);
 
 };
-bool compare(const studentas&, const studentas&);
-bool comparePagalPavarde(const studentas&, const studentas&);
-bool comparePagalEgza(const studentas&, const studentas&);
+bool comparePavarde(const studentas&, const studentas&);
+bool compareEgzas(const studentas&, const studentas&);
+bool compareGalBalas(const studentas&, const studentas&);

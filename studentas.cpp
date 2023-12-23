@@ -1,6 +1,5 @@
 #include "studentas.h"
 
-// konstruktoriaus realizacija
 studentas::studentas(istream& is) { 
     readStudent(is);  
 }
@@ -18,34 +17,30 @@ double studentas::galBalas() const {
     return mediana*0.4 + egz_*0.6;
 }
 
-// Studentas::readStudent realizacija
 istream& studentas::readStudent(istream& is) {
     string vardas, pavarde;
     int pazymys;
     if (is >> vardas >> pavarde) {
-        setVardas(vardas); // set the student's first name
-        setPavarde(pavarde); // set the student's last name
-        pazymiai_.clear(); // clear the grades vector
+        setVardas(vardas); 
+        setPavarde(pavarde); 
+        pazymiai_.clear(); 
         while (is >> pazymys) {
-            pazymiai_.push_back(pazymys); // add the grade to the student's grades
+            pazymiai_.push_back(pazymys); 
         }
         if (!pazymiai_.empty()) {
-            setEgz(pazymiai_.back()); // set the student's exam score
-            pazymiai_.pop_back(); // remove the last grade, which is now the exam score
+            setEgz(pazymiai_.back()); 
+            pazymiai_.pop_back(); 
         }
     }
     return is;
 }
 
-// Ne Studentas member funkcija, bet dirba su Studentas objektais, todėl realizacija čia
-bool compare(const studentas& a, const studentas& b) {
-    return a.galBalas() < b.galBalas();
-}
-
-bool comparePagalPavarde(const studentas& a, const studentas& b) {
+bool comparePavarde(const studentas& a, const studentas& b) {
     return a.getPavarde() < b.getPavarde();
 }
-
-bool comparePagalEgza(const studentas& a, const studentas& b) {
+bool compareEgzas(const studentas& a, const studentas& b) {
     return a.getEgz() < b.getEgz();
+}
+bool compareGalBalas(const studentas& a, const studentas& b) {
+    return a.galBalas() < b.galBalas();
 }

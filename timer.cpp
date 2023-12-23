@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+#include "failai.h"
 
 int failoGeneravimas(int kiek) {
     srand(time(0));
@@ -22,9 +22,7 @@ int failoGeneravimas(int kiek) {
     cout << "Failas kursiokai" << to_string(kiek) << ".txt" <<  " sugeneruotas. " << endl;
     return 0;
 }
-
-template <typename Container>
-void timer(string konteineris) {
+void timer() {
     string arGen, pagal, strategija;
     chrono::high_resolution_clock::time_point start0, start1, start2, start3, start4, stop0, stop1, stop2, stop3, stop4;
     chrono::duration<double> trukme0, trukme1, trukme2, trukme3, trukme4;
@@ -38,8 +36,7 @@ void timer(string konteineris) {
         failoGeneravimas(1000000);
         failoGeneravimas(10000000);
     }
-
-    cout << "Rūšiuoti duomenis pagal vardą (spausti 1), pavardę (spausti 2) ar galutinį balą (spausti 3)? ";
+    cout << "Rūšiuoti duomenis pagal pavardę (spausti 1), egzamino rezultatą (spausti 2) ar galutinį balą (spausti 3)? ";
     cin >> pagal;
     cout << "Kurią strategiją naudoti (1, 2 ar 3)? ";
     cin >> strategija;
@@ -56,13 +53,13 @@ void timer(string konteineris) {
             start0 = chrono::high_resolution_clock::now();
 
             start1 = chrono::high_resolution_clock::now();
-            Container studentai = isFailo<Container>(pavadinimas);
+            vector<studentas> studentai = isFailo(pavadinimas);
             stop1 = chrono::high_resolution_clock::now();
 
             sortStudentai(studentai, pagal);
 
             start2 = chrono::high_resolution_clock::now();
-            pair<Container, Container> suskirstyti = skirstymas1(studentai);
+            pair<vector<studentas>, vector<studentas>> suskirstyti = skirstymas1(studentai);
             stop2 = chrono::high_resolution_clock::now();
 
             start3 = chrono::high_resolution_clock::now();
@@ -80,13 +77,13 @@ void timer(string konteineris) {
             start0 = chrono::high_resolution_clock::now();
 
             start1 = chrono::high_resolution_clock::now();
-            Container studentai = isFailo<Container>(pavadinimas);
+            vector<studentas> studentai = isFailo(pavadinimas);
             stop1 = chrono::high_resolution_clock::now();
 
             sortStudentai(studentai, pagal);
 
             start2 = chrono::high_resolution_clock::now();
-            Container vargsiukaii = skirstymas2(studentai);
+            vector<studentas> vargsiukaii = skirstymas2(studentai);
             stop2 = chrono::high_resolution_clock::now();
 
             start3 = chrono::high_resolution_clock::now();
@@ -104,13 +101,13 @@ void timer(string konteineris) {
             start0 = chrono::high_resolution_clock::now();
 
             start1 = chrono::high_resolution_clock::now();
-            Container studentai = isFailo<Container>(pavadinimas);
+            vector<studentas> studentai = isFailo(pavadinimas);
             stop1 = chrono::high_resolution_clock::now();
 
             sortStudentai(studentai, pagal);
 
             start2 = chrono::high_resolution_clock::now();
-            Container vargsiukaii = skirstymas3(studentai);
+            vector<studentas> vargsiukaii = skirstymas3(studentai);
             stop2 = chrono::high_resolution_clock::now();
 
             start3 = chrono::high_resolution_clock::now();
@@ -136,5 +133,3 @@ void timer(string konteineris) {
         << "Viso testo laikas: " << trukme0.count() << endl << endl;
     }
 }
-template void timer<vector<studentas>>(string konteineris);
-template void timer<list<studentas>>(string konteineris); 
