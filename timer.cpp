@@ -46,21 +46,20 @@ void timer() {
 
     cout << endl << "PROGRAMOS VEIKIMO GREIČIO ANALIZĖ: " << endl << endl;
 
-    for (int i = 1000; i <= 100000; i = i * 10) {
+    for (int i = 100000; i <= 1000000; i = i * 10) {
         string pavadinimas = "kursiokai" + to_string(i) + ".txt";
         string vargsiukai = "vargsiukai" + to_string(i) + ".txt";
         string kietekai = "kietekai" + to_string(i) + ".txt";
 
+        start0 = chrono::high_resolution_clock::now();
+
+        start1 = chrono::high_resolution_clock::now();
+        vector<studentas> studentai = isFailo(pavadinimas);
+        stop1 = chrono::high_resolution_clock::now();
+
+        sortStudentai(studentai, pagal);
+
         if (strategija == "1") {
-
-            start0 = chrono::high_resolution_clock::now();
-
-            start1 = chrono::high_resolution_clock::now();
-            vector<studentas> studentai = isFailo(pavadinimas);
-            stop1 = chrono::high_resolution_clock::now();
-
-            sortStudentai(studentai, pagal);
-
             start2 = chrono::high_resolution_clock::now();
             pair<vector<studentas>, vector<studentas>> suskirstyti = skirstymas1(studentai);
             stop2 = chrono::high_resolution_clock::now();
@@ -73,18 +72,7 @@ void timer() {
             iFaila(suskirstyti.second, kietekai);
             stop4 = chrono::high_resolution_clock::now();
 
-            stop0 = chrono::high_resolution_clock::now();
-
         } else if (strategija == "2") {
-
-            start0 = chrono::high_resolution_clock::now();
-
-            start1 = chrono::high_resolution_clock::now();
-            vector<studentas> studentai = isFailo(pavadinimas);
-            stop1 = chrono::high_resolution_clock::now();
-
-            sortStudentai(studentai, pagal);
-
             start2 = chrono::high_resolution_clock::now();
             vector<studentas> vargsiukaii = skirstymas2(studentai);
             stop2 = chrono::high_resolution_clock::now();
@@ -97,18 +85,7 @@ void timer() {
             iFaila(studentai, kietekai);
             stop4 = chrono::high_resolution_clock::now();
 
-            stop0 = chrono::high_resolution_clock::now();
-            
         } else if (strategija == "3") {
-
-            start0 = chrono::high_resolution_clock::now();
-
-            start1 = chrono::high_resolution_clock::now();
-            vector<studentas> studentai = isFailo(pavadinimas);
-            stop1 = chrono::high_resolution_clock::now();
-
-            sortStudentai(studentai, pagal);
-
             start2 = chrono::high_resolution_clock::now();
             vector<studentas> vargsiukaii = skirstymas3(studentai);
             stop2 = chrono::high_resolution_clock::now();
@@ -120,9 +97,10 @@ void timer() {
             start4 = chrono::high_resolution_clock::now();
             iFaila(studentai, kietekai);
             stop4 = chrono::high_resolution_clock::now();
-
-            stop0 = chrono::high_resolution_clock::now();
         }
+
+        stop0 = chrono::high_resolution_clock::now();
+
         trukme0 = stop0 - start0;
         trukme1 = stop1 - start1;
         trukme2 = stop2 - start2;

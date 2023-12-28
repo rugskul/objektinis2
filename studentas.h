@@ -21,9 +21,13 @@ private:
     int egz_;
     vector<int> pazymiai_;
 public:
+    //konstruktoriai
     studentas() : vardas_(""), pavarde_(""), egz_(0), pazymiai_({}) {}
     studentas(const string& vardas, const string& pavarde, const double& egz, const vector<int>& pazymiai): 
         vardas_(vardas), pavarde_(pavarde), egz_(egz), pazymiai_(pazymiai) {}
+        
+    //destuktorius
+    ~studentas() {}
 
     void setVardas(const string& vardas) { vardas_ = vardas; }
     string getVardas() const { return vardas_; }
