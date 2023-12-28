@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+#include "studentas.h"
 
 studentas apieStudenta() {
     studentas studentas;

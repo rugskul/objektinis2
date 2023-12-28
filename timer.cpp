@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+#include "studentas.h"
 
 int failoGeneravimas(int kiek) {
     random_device rd;

@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+#include "studentas.h"
 
 vector<studentas> isFailo(string failas) {
     vector<studentas> studentai;

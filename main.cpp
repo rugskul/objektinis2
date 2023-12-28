@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+#include "studentas.h"
 
 int main() {
     string time, duomenys;

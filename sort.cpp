@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+#include "studentas.h"
 
 void sortStudentai(vector<studentas>& studentai, string pagal) {
     if (pagal == "1") {

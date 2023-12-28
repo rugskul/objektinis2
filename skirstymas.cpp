@@ -1,4 +1,4 @@
-#include "funkcijos.h"
+#include "studentas.h"
 
 pair<vector<studentas>, vector<studentas>> skirstymas1(vector<studentas> studentai) {
     vector<studentas> vargsiukai, kietekai;
