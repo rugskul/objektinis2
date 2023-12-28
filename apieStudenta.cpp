@@ -15,12 +15,14 @@ studentas apieStudenta() {
         cin >> arAtsitiktinai;
         if (arAtsitiktinai == "a") {
             //atsitiktiniai namu darbu pazymiai ir egzamino rezultatas
-            srand(time(0));
-            for (int j = 0; j < rand()%10+1; j++) {
-                pazymys = rand() % 10 + 1;
+            random_device rd; 
+            mt19937 gen(rd());
+            uniform_int_distribution<> dis(1, 10);
+            for (int j = 0; j < dis(gen); j++) {
+                pazymys = dis(gen);
                 pazymiai.push_back(pazymys);
             }
-            studentas.setEgz(rand() % 10 + 1);
+            studentas.setEgz(dis(gen));
         } else if (arAtsitiktinai == "r") {
             //pazymiu ivedimas su enter
             cout << "Namų darbų pažymiai (baigti 2 kartus paspaudus ENTER): " << endl;
