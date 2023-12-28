@@ -10,6 +10,7 @@ double studentas::galBalas(string vidmed) const {
     } else if (vidmed == "m") {
         return 0.4*mediana(pazymiai_) + 0.6*egz_;
     }
+    return 0.0;
 }
 
 istream& studentas::readStudent(istream& is) {

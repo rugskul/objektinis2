@@ -47,3 +47,22 @@ Padaryta programos veikimo greičio analizė priklausomai nuo pasirinktos strate
 | 1 strategija     | 0.14869966666   | 4.99282666667    | 31.6336    |
 | 2 strategija | 0.04408363333   | 1.3294    | 15.5944666667    |
 | 3 strategija  | 0.0345008  | 1.350215   | 11.1841933333    |
+
+# v1.1
+Struct studentas pakeista į class studentas.
+Programos greičio analizės palyginimas naudojant struct iš ankstesniojo darbo ir class iš dabartinės realizacijos. Atlikta su 100000 ir 1000000 dydžio failais, naudojamas vektorius ir greičiausia studentų skirstymo strategija (3).
+Atlikita eksperimentinė analizė priklausomai nuo kompiliatoriaus optimizavimo lygio, nurodomo per flag'us: O1, O2, O3.
+
+| Struct       | 100000       | 1000000      |
+|----------------|------------|------------|
+| -     | 15.6462   | 176.488    |
+| O1     | 63.6034  | 508.621    |
+| O2 | 65.115   | 459.14    |
+| O3  | 18.8003  | 140.561   |
+
+| Class       | 100000       | 1000000      |
+|----------------|------------|------------|
+| -     | 34.7665  | 502.029    |
+| O1     | 13.4714  | 140.965    |
+| O2 | 31.8208   | 250.719    |
+| O3  | 31.6903  | 252.082   |
