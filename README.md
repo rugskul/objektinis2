@@ -66,3 +66,6 @@ Atlikita eksperimentinė analizė priklausomai nuo kompiliatoriaus optimizavimo 
 | O1     | 13.4714  | 140.965    |
 | O2 | 31.8208   | 250.719    |
 | O3  | 31.6903  | 252.082   |
+
+# v1.2
+Realizuoti visi reikiami "Rule of three" ir įvesties/išvesties operatoriai studentas klasei.
