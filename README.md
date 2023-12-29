@@ -69,3 +69,5 @@ Atlikita eksperimentinė analizė priklausomai nuo kompiliatoriaus optimizavimo 
 
 # v1.2
 Realizuoti visi reikiami "Rule of three" ir įvesties/išvesties operatoriai studentas klasei.
+# v1.5
+Sukurta bazinė abstrakti klasė žmogus, skirta bendrai aprašyti žmogų, o studentas klasė yra išvesta iš jos.
