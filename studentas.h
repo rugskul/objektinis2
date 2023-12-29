@@ -15,33 +15,45 @@
 
 using namespace std;
 
-class studentas {
-private:
+class zmogus {
+protected:
     string vardas_;
     string pavarde_;
+public:
+    zmogus(string vardas = "", string pavarde = "") : vardas_{vardas}, pavarde_{pavarde} {}
+    virtual ~zmogus() = default;
+
+    virtual void setVardas(const string& vardas) = 0;
+    virtual string getVardas() const = 0;
+
+    virtual void setPavarde(const string& pavarde) = 0;
+    virtual string getPavarde() const = 0;
+};
+
+class studentas : public zmogus {
+private:
     int egz_;
     vector<int> pazymiai_;
 public:
     // default konstruktorius
-    studentas() : vardas_(""), pavarde_(""), egz_(0), pazymiai_({}) {}
+    studentas() : egz_(0), pazymiai_({}) {}
     // konstruktorius su parametrais
-    studentas(const string& vardas, const string& pavarde, const int& egz, const vector<int>& pazymiai): 
-        vardas_(vardas), pavarde_(pavarde), egz_(egz), pazymiai_(pazymiai) {}
+    studentas(const string& vardas, const string& pavarde, const int& egz, const vector<int>& pazymiai)
+        : zmogus(vardas, pavarde), egz_(egz), pazymiai_(pazymiai) {}
     // 1. Copy constructor
-    studentas(const studentas& other) 
-        : vardas_(other.vardas_), pavarde_(other.pavarde_), egz_(other.egz_), pazymiai_(other.pazymiai_) {}
+    studentas(const studentas& other)
+        : zmogus(other), egz_(other.egz_), pazymiai_(other.pazymiai_) {}
     // 2. Copy assignment operator
     studentas& operator=(const studentas& other) {
         if (this != &other) {
-            vardas_ = other.vardas_;
-            pavarde_ = other.pavarde_;
+            zmogus::operator=(other);
             egz_ = other.egz_;
             pazymiai_ = other.pazymiai_;
         }
         return *this;
-    }   
+    } 
     // 3. destuktorius
-    ~studentas() {}
+    ~studentas() override {}
 
     void setVardas(const string& vardas) { vardas_ = vardas; }
     string getVardas() const { return vardas_; }
