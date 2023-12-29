@@ -54,6 +54,16 @@ public:
 
     void setPazymiai(const vector<int>& pazymiai) { pazymiai_ = pazymiai; }
     vector<int> getPazymiai() const { return pazymiai_; }
+    
+    friend ostream& operator<<(ostream& out, const studentas& s) {
+        out << fixed;
+        out << setw(15) << left << s.vardas_ << setw(15) << left << s.pavarde_ << setw(15) << left << setprecision(2) << s.galBalas("v") << setw(15) << left << setprecision(2) << s.galBalas("m") << "\n";
+        return out;
+    }
+    friend istream& operator>>(istream& in, studentas& s) {
+        in >> s.vardas_ >> s.pavarde_;
+        return in;
+    }
 
     studentas(istream& is);
     double galBalas(string vidmed) const;

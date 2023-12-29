@@ -7,9 +7,7 @@ studentas apieStudenta() {
     vector<int> pazymiai;
 
     cout << endl << "Vardas ir pavardė: ";
-    cin >> vardas >> pavarde;
-    studentas.setVardas(vardas);
-    studentas.setPavarde(pavarde);
+    cin >> studentas;
     cout << "Ar pažymiai generuojami atsitiktinai (spausti 'a'), ar įvedami ranka (spausti 'r')? ";
     do {
         cin >> arAtsitiktinai;
