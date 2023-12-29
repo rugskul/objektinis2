@@ -22,12 +22,25 @@ private:
     int egz_;
     vector<int> pazymiai_;
 public:
-    //konstruktoriai
+    // default konstruktorius
     studentas() : vardas_(""), pavarde_(""), egz_(0), pazymiai_({}) {}
-    studentas(const string& vardas, const string& pavarde, const double& egz, const vector<int>& pazymiai): 
+    // konstruktorius su parametrais
+    studentas(const string& vardas, const string& pavarde, const int& egz, const vector<int>& pazymiai): 
         vardas_(vardas), pavarde_(pavarde), egz_(egz), pazymiai_(pazymiai) {}
-        
-    //destuktorius
+    // 1. Copy constructor
+    studentas(const studentas& other) 
+        : vardas_(other.vardas_), pavarde_(other.pavarde_), egz_(other.egz_), pazymiai_(other.pazymiai_) {}
+    // 2. Copy assignment operator
+    studentas& operator=(const studentas& other) {
+        if (this != &other) {
+            vardas_ = other.vardas_;
+            pavarde_ = other.pavarde_;
+            egz_ = other.egz_;
+            pazymiai_ = other.pazymiai_;
+        }
+        return *this;
+    }   
+    // 3. destuktorius
     ~studentas() {}
 
     void setVardas(const string& vardas) { vardas_ = vardas; }
