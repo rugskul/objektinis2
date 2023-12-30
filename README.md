@@ -71,3 +71,5 @@ Atlikita eksperimentinė analizė priklausomai nuo kompiliatoriaus optimizavimo 
 Realizuoti visi reikiami "Rule of three" ir įvesties/išvesties operatoriai studentas klasei.
 # v1.5
 Sukurta bazinė abstrakti klasė žmogus, skirta bendrai aprašyti žmogų, o studentas klasė yra išvesta iš jos.
+# v3.0
+Sukurtas programos diegimo failas - Setup.exe  (1.5 versijos pagrindu).
